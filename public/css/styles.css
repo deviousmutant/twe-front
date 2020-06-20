@@ -76,6 +76,7 @@ textarea::placeholder {
 }
 .btn {
   margin-top: 1rem;
+  border-radius: 10px;
   background-color: #fff;
   display: inline;
   align-self: center;
@@ -83,23 +84,23 @@ textarea::placeholder {
 }
 .btn-outline {
   background-color: transparent;
-  border: 1px solid #ff6363;
+  border: 3px solid #ff6363;
   color: #fff;
 }
 .btn-outline:hover {
   background-color: #ff6363;
-  border: 1px solid #ff6363;
+  border: 3px solid #ff6363;
   color: #fff;
 }
 .btn-solid {
   background-color: #ff6363;
-  border: 1px solid #ff6363;
+  border: 3px solid #ff6363;
   color: #fff;
 }
 .btn-solid:hover {
-  background-color: #ff6363;
-  border: 1px solid #ff6363;
-  color: #000;
+  background-color: transparent;
+  border: 3px solid #ff6363;
+  color: #fff;
 }
 .small {
   margin-top: 1em;

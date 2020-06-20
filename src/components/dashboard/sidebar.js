@@ -1,12 +1,18 @@
 import React from 'react'
 import Item from './sidebar-item'
+import Button from '../form/Button'
+import Cookies from 'js-cookie'
 
 function Sidebar(props) {
 
     function redirect(event) {
         props.handleChangeFunc(event)
     }
-
+    function handleClick() {
+        Cookies.remove("name")
+        Cookies.remove("auth")
+        Cookies.remove("valid")
+    }
     return (
         <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div className="sidebar-sticky pt-3">
@@ -72,7 +78,7 @@ function Sidebar(props) {
                 <ul className="nav flex-column mb-2">
                     <Item
                         name="Sign Out"
-                        link="/welcome"
+                        redirect={handleClick}
                     />
                 </ul>
                 <p className="sidebar-footer"> &copy; 2020 THEPC</p>

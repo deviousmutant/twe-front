@@ -7,9 +7,11 @@ function App() {
     <div>
       <ul>
         <li>
+          You must be logged in to view the Dashboard <br />
           <Link to="/dashboard"> Dashboard</Link>
         </li>
         <li>
+          Register and login here <br />
           <Link to="/welcome"> Welcome</Link>
         </li>
       </ul>
