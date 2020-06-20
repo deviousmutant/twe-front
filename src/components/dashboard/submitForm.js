@@ -1,17 +1,21 @@
 import React from 'react'
 import Input from '../form/Input'
 import Button from '../form/Button'
+import axios from 'axios'
+import qs from 'qs'
+import Cookie from 'js-cookie'
 
 function SubmitForm() {
 
     const finalArticle = {
-        title: "",
-        type: "",
-        content: ""
+        atype: "",
+        atitle: "",
+        acontent: ""
     }
     const [title, setTitle] = React.useState();
     const [content, setContent] = React.useState();
     const [type, setType] = React.useState();
+    const [article, setArticle] = React.useState(false);
 
     function handleChange(event) {
         const title = event.target.name
@@ -19,14 +23,32 @@ function SubmitForm() {
         title === "title" ? setTitle(value) : title === "articleType" ? setType(value) : setContent(value)
 
     }
+
+    finalArticle.atitle = title
+    finalArticle.atype = type
+    finalArticle.acontent = content
     function handleClick() {
-        finalArticle.title = title
-        finalArticle.type = type
-        finalArticle.content = content
+        setArticle(previous => !previous)
         console.log(finalArticle);
-        setTitle("")
-        setContent("")
+
     }
+    React.useEffect(() => {
+        axios.post('http://thepc.herokuapp.com/api/articles', qs.stringify(finalArticle), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer ' + Cookie.get("auth")
+            }
+        })
+            .then(response => {
+                console.log(response)
+                setTitle("")
+                setContent("")
+
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+    }, [article])
 
     return (
         <div>

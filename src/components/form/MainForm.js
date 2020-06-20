@@ -3,6 +3,7 @@ import Input from './Input'
 import Button from './Button'
 import axios from 'axios'
 import qs from 'qs'
+import md5 from 'md5'
 
 function Form(props) {
     const status = props.status;
@@ -57,25 +58,56 @@ function Form(props) {
             )
         }
     }
+    function hashPass(obj) {
+        var pass = obj.password
+        obj.password = md5(pass)
+        if (obj.confirm) {
+            var cnf = obj.confirm
+            obj.confirm = md5(cnf)
+        }
+    }
     var rForm = regform;
     var lForm = logform;
     function handleSubmit() {
-        setRegister(previous => !previous)
+        if (status === "Register") {
+            hashPass(rForm)
+            setRegister(previous => !previous)
+        } else if (status === "Login") {
+            hashPass(lForm)
+            setLogin(previous => !previous)
+        }
     }
 
     React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api', qs.stringify(rForm), {
+        axios.post('http://thepc.herokuapp.com/api/users/signup', qs.stringify(rForm), {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
             .then(response => {
-                console.log(response.data)
+                console.log(response)
+
             })
             .catch(error => {
-                console.log(error.response.data.message)
+                console.log(error.response)
             });
     }, [register])
+    function handleRedirect(status, value, auth) {
+        props.setAuth(status, value, auth)
+    }
+    React.useEffect(() => {
+        axios.post('http://thepc.herokuapp.com/api/users/login', qs.stringify(lForm), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+            .then(response => {
+                response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
+            })
+            .catch(error => {
+                console.log(error.response)
+            });
+    }, [login])
 
     return (
         <div className="col-sm-4 col-md-6">

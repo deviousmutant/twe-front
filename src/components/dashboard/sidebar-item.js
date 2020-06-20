@@ -2,13 +2,15 @@ import React from 'react'
 
 function Item(props) {
 
-    function handleClick(event) {
-        props.redirect(event)
+    function handleClick() {
+        props.redirect(props.name)
+        console.log(props.name);
     }
+
 
     return (
         <li className="nav-item" onClick={handleClick}>
-            <a className={"nav-link " + props.addClass} href={"/" + props.name}>
+            <a className={"nav-link " + props.addClass} >
                 <span data-feather="home"></span>{props.name}
             </a>
         </li>
