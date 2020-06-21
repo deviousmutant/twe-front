@@ -1,0 +1,18 @@
+h1 {
+  color: black;
+  font-size: 5em;
+  text-align: center;
+}
+h3 {
+  color: darkgray;
+  text-align: center;
+  font-size: 3em;
+}
+.question {
+  font-size: 10em;
+  text-shadow: darkgray;
+}
+.image {
+  margin-top: 5em;
+  width: 30%;
+}
