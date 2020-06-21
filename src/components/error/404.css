@@ -1,18 +1,20 @@
-h1 {
+.notFoundTitle {
   color: black;
   font-size: 5em;
   text-align: center;
 }
-h3 {
+.notFoundText {
   color: darkgray;
   text-align: center;
   font-size: 3em;
 }
-.question {
+.notFoundQuestion {
   font-size: 10em;
   text-shadow: darkgray;
+  color: #000;
+  text-align: center;
 }
-.image {
+.notFoundImage {
   margin-top: 5em;
   width: 30%;
 }

@@ -92,6 +92,7 @@ function Form(props) {
                 console.log(error.response)
             });
     }, [register])
+
     function handleRedirect(status, value, auth) {
         props.setAuth(status, value, auth)
     }
