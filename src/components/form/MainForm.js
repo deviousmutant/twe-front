@@ -80,7 +80,7 @@ function Form(props) {
     function handleRedirect(status, value, auth) {
         props.setAuth(status, value, auth)
     }
-    
+  
     React.useEffect(() => {
         axios.post('http://thepc.herokuapp.com/api/users/signup', qs.stringify(rForm), {
             headers: {
@@ -88,7 +88,7 @@ function Form(props) {
             }
         })
             .then(response => {
-                console.log(response)
+                response.status === 201 && handleRedirect(true, response.data.userFound.name, response.data.token)
 
             })
             .catch(error => {
@@ -96,7 +96,6 @@ function Form(props) {
             });
     }, [register])
 
-   
     React.useEffect(() => {
         axios.post('http://thepc.herokuapp.com/api/users/login', qs.stringify(lForm), {
             headers: {

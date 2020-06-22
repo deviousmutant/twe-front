@@ -193,13 +193,3 @@ textarea::placeholder {
     width: 60%;
   }
 }
-
-
-
-.test-text {
-  background-color: transparent;
-  text-align: right;
-  margin-right: 2px;
-  vertical-align: center;
-  margin-bottom: 0;
-}
