@@ -5,7 +5,6 @@ function Cards(props) {
 
     React.useEffect(() => {
         const hours = new Date().getHours()
-
         if (hours > 0 && hours < 12) {
             setGreeting("Good Morning,")
         } else if (hours >= 12 && hours < 18) {

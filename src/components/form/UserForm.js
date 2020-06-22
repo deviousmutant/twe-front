@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 function UserForm(props) {
+    document.title = "Authorization"
     const [status, setStatus] = React.useState("Welcome");
     const [isAuthorized, setIsAuthorized] = React.useState(false)
 
