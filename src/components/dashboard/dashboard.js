@@ -19,7 +19,7 @@ function Dashboard(props) {
             <div className="dashboard">
                 <Navbar />
                 <div className="container-fluid">
-                    <div className="row">
+                    <div className="row cards-res-margin">
                         <Sidebar
                             pageName={page}
                             handleChangeFunc={HandleChange}

@@ -22,7 +22,7 @@ function UserForm(props) {
     return (
         <div className="Form">
             <div className="Form-box">
-                <div className="row row-welcome">
+                <div className="row row-welcome removing-padding">
                     <Illustration
                         status={status}
                     />
