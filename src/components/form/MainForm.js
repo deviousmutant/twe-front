@@ -87,7 +87,7 @@ function Form(props) {
             }
         })
             .then(response => {
-                response.status === 201 && handleRedirect(true, response.data.userFound.name, response.data.token)
+                response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
 
             })
             .catch(error => {

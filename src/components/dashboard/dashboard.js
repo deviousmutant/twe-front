@@ -17,7 +17,7 @@ function Dashboard(props) {
     if (valid) {
         return (
             <div className="dashboard">
-                <Navbar />
+                {/* <Navbar /> */}
                 <div className="container-fluid">
                     <div className="row">
                         <Sidebar
