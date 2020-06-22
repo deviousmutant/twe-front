@@ -77,7 +77,10 @@ function Form(props) {
             setLogin(previous => !previous)
         }
     }
-
+    function handleRedirect(status, value, auth) {
+        props.setAuth(status, value, auth)
+    }
+    
     React.useEffect(() => {
         axios.post('http://thepc.herokuapp.com/api/users/signup', qs.stringify(rForm), {
             headers: {
@@ -93,9 +96,7 @@ function Form(props) {
             });
     }, [register])
 
-    function handleRedirect(status, value, auth) {
-        props.setAuth(status, value, auth)
-    }
+   
     React.useEffect(() => {
         axios.post('http://thepc.herokuapp.com/api/users/login', qs.stringify(lForm), {
             headers: {
@@ -105,13 +106,11 @@ function Form(props) {
             .then(response => {
                 response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
             })
-            .catch(error => {
-                console.log(error.response)
-            });
+            
     }, [login])
 
     return (
-        <div className="col-sm-4 col-md-6">
+        <div className="col-sm-4 col-md-6 responsive">
             <h1 className="form-header">{status}</h1>
             {status === "Welcome" ?
                 <div>
