@@ -17,7 +17,7 @@ function App() {
         </li>
         <li>
           Edition design <br />
-          <Link to="/edition"> Welcome</Link>
+          <Link to="/edition"> Edition</Link>
         </li>
       </ul>
     </div>

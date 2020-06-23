@@ -1,8 +1,0 @@
-import React from 'react'
-
-function test() {
-    document.title = "hello world!"
-    return <h1>Hello World!</h1>
-}
-
-export default test;

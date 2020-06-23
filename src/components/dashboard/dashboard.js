@@ -36,12 +36,18 @@ function Dashboard(props) {
         })
     })
     if (valid === "false") {
-        return (
-            <Loader />
-        )
+        if (auth !== undefined) {
+            return (
+                <Loader />
+            )
+        } else {
+            return (
+                <Redirect to="/" />
+            );
+        }
     } else if (valid === "true") {
         return (
-            <div className="dashboard">
+            <div className="dashboard ">
                 <Navbar />
                 <div className="container-fluid">
                     <div className="row cards-res-margin">

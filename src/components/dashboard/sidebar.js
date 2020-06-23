@@ -8,7 +8,7 @@ function Sidebar(props) {
     function redirect(event) {
         props.handleChangeFunc(event)
     }
-    function handleClick() {
+    function handleClick(reponse) {
         Cookies.remove("name")
         Cookies.remove("auth")
         Cookies.remove("valid")
