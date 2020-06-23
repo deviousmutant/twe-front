@@ -1,4 +1,44 @@
-const content=
+import React from 'react'
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import qs from 'qs'
+
+
+
+function Content(props)
+{
+    const auth = Cookies.get("auth");
+    function HandleOutput(data)
+    {
+        props.HandleOutput(data)
+    }
+    console.log(auth);
+    React.useEffect(()=>{
+        axios.get('https://thepc.herokuapp.com/api/articles/list',  {
+            headers: {
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Bearer '+auth
+                
+            }
+        })
+            .then(response => {
+                HandleOutput(response.data);
+            })
+            .catch(error => {
+                console.log(error)
+            })   
+
+            
+    },[])
+
+   return null;
+}
+
+
+
+
+
+/*const content=
 [
     {
         key:1,
@@ -33,6 +73,9 @@ const content=
     
     
     
-]
+]*/
 
-export default content;
+
+
+
+export default Content;
