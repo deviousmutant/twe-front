@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 function App() {
   document.title = "Welcome"
+
   return (
     <div>
       <ul>
@@ -14,9 +15,14 @@ function App() {
           Register and login here <br />
           <Link to="/welcome"> Welcome</Link>
         </li>
+        <li>
+          Edition design <br />
+          <Link to="/edition"> Welcome</Link>
+        </li>
       </ul>
     </div>
   );
+
 }
 
 export default App;
