@@ -16,7 +16,6 @@ function UserForm(props) {
     function handleAuth(status, value, auth) {
         Cookies.set("name", value)
         Cookies.set("auth", auth)
-        Cookies.set("valid", true)
         setIsAuthorized(status)
     }
     return (

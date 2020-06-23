@@ -1,6 +1,5 @@
 import React from 'react'
 import Item from './sidebar-item'
-import Button from '../form/Button'
 import Cookies from 'js-cookie'
 
 function Sidebar(props) {
@@ -11,7 +10,7 @@ function Sidebar(props) {
     function handleClick(reponse) {
         Cookies.remove("name")
         Cookies.remove("auth")
-        Cookies.remove("valid")
+        props.signout()
     }
     return (
         <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">

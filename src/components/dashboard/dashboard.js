@@ -14,11 +14,16 @@ function Dashboard(props) {
 
     document.title = "TWE - Dashboard";
     const [page, setPage] = React.useState("Dashboard");
+    const [valid, setValid] = React.useState("false")
 
     function HandleChange(event) {
         setPage(event)
     }
-    const [valid, setValid] = React.useState("false")
+
+    function signOut() {
+        setValid("false")
+    }
+
     function handleAuth(response) {
         setValid("true")
     }
@@ -54,6 +59,7 @@ function Dashboard(props) {
                         <Sidebar
                             pageName={page}
                             handleChangeFunc={HandleChange}
+                            signout={signOut}
                         />
                         <Main
                             pageName={page}
