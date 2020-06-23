@@ -146,10 +146,6 @@ textarea::placeholder {
 
 @media (min-width: 600px)  {
   
-  
-  
-  
-  
   .Form-box {
     width:  80%;
     height: 70%;
@@ -188,6 +184,7 @@ textarea::placeholder {
   .Form-box {
     width: 60%;
     height: 60%;
+    background: linear-gradient(280deg, #202040 50%, #fff 50%);
   }
   .illustration {
     width: 60%;

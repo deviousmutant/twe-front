@@ -1,9 +1,14 @@
 import React from 'react'
 
+
+var dropDown= document.getElementsByClassName("navbar-toggler");
+
 function Item(props) {
     function handleClick() {
-        props.redirect(props.name)
-    }
+        dropDown[0].click();
+        props.redirect(props.name);
+    } 
+           
 
     return (
         <li className="nav-item" onClick={handleClick}>
