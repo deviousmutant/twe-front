@@ -1,0 +1,16 @@
+.editionTitle {
+  color: black;
+  font-size: 5em;
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: white;
+}
+.title-container {
+  background-color: coral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

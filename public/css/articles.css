@@ -1,80 +1,68 @@
-.card-content{
-    
-    font-family: "Circular";
-    color: #2F2F2F;
+.card-content {
+  font-family: "Circular";
+  color: #2f2f2f;
 }
 
-.line{
+.line {
   width: 3rem;
   margin: 1rem auto 0 !important;
-  height: 1px; 
+  height: 1px;
   background: black;
 }
 
-
-
-
-
-
-
-.read-more{
+.read-more {
   display: inline-block;
   color: #372772;
   cursor: pointer;
 }
 
-.icon{
+.icon {
   width: 1.2rem;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
   cursor: pointer;
 }
 
-.first-icon{
+.first-icon {
   margin-left: 0em;
 }
 
-.second-icon{
+.second-icon {
   width: 1.1rem;
 }
 
-.third-icon{
+.third-icon {
   width: 1.5rem;
 }
 
-.card-footer{
+.card-footer {
   padding-bottom: 0 !important;
 }
 
-.row-changes{
+.row-changes {
   width: auto;
   align-items: baseline;
 }
 
-.card-padding{
+.card-padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
   padding-top: 0 !important;
   border: none;
-  border-radius: 20px ;
+  border-radius: 20px;
 }
 
-.img-radius{
-  border-top-right-radius:20px ;
-  border-top-left-radius:20px ;
-
+.img-radius {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
-
-
 
 @media (max-width: 600px) {
-.card-res{
-  width: 75%;
-}
+  .card-res {
+    width: 75%;
+  }
 
-.row{
-  margin: 0 !important;
-  
-}
-
+  .row {
+    margin: 0 !important;
+  }
 }
