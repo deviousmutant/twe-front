@@ -43,6 +43,7 @@ function Sidebar(props) {
                     <Item
                         name="Articles"
                         redirect={redirect}
+                        valid={props.valid}
                     />
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -53,13 +54,13 @@ function Sidebar(props) {
                         name="Addition"
                         redirect={redirect}
                     />
-                    
+
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Contributions</span>
                 </h6>
                 <ul className="nav flex-column mb-2">
-                    
+
                     <Item
                         name="Others contribution"
                         redirect={redirect}

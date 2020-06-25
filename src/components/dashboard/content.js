@@ -1,24 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import qs from 'qs'
 
-
-
-function Content(props)
-{
+function Content(props) {
     const auth = Cookies.get("auth");
-    function HandleOutput(data)
-    {
+    function HandleOutput(data) {
         props.HandleOutput(data)
     }
-    console.log(auth);
-    React.useEffect(()=>{
-        axios.get('https://thepc.herokuapp.com/api/articles/list',  {
+    React.useEffect(() => {
+        axios.get('https://thepc.herokuapp.com/api/articles/list', {
             headers: {
                 // 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer '+auth
-                
+                'Authorization': 'Bearer ' + auth
             }
         })
             .then(response => {
@@ -26,12 +19,10 @@ function Content(props)
             })
             .catch(error => {
                 console.log(error)
-            })   
+            })
+    }, [])
 
-            
-    },[])
-
-   return null;
+    return null;
 }
 
 
