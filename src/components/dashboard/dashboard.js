@@ -25,7 +25,13 @@ function Dashboard(props) {
     }
 
     function handleAuth(response) {
-        setValid("true")
+        if (response.admin === false) {
+            setValid("true")
+        } else if (response.admin === true) {
+            setValid("admin")
+        } else {
+            setValid("false")
+        }
     }
 
     React.useEffect(() => {
@@ -35,7 +41,6 @@ function Dashboard(props) {
             }
         }).then(response => {
             handleAuth(response.data)
-            console.log(response.data)
         }).catch(error => {
             console.log(error)
         })
@@ -50,7 +55,7 @@ function Dashboard(props) {
                 <Redirect to="/" />
             );
         }
-    } else if (valid === "true") {
+    } else if (valid === "true" || valid === "admin") {
         return (
             <div className="dashboard ">
                 <Navbar />

@@ -2,7 +2,10 @@
   font-family: "Circular";
   color: #2f2f2f;
 }
-
+.card-footer-article {
+  background-color: transparent;
+  border: 0;
+}
 .line {
   width: 3rem;
   margin: 1rem auto 0 !important;
@@ -34,22 +37,9 @@
 .third-icon {
   width: 1.5rem;
 }
-
-.card-footer {
-  padding-bottom: 0 !important;
-}
-
 .row-changes {
   width: auto;
   align-items: baseline;
-}
-
-.card-padding {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  padding-top: 0 !important;
-  border: none;
-  border-radius: 20px;
 }
 
 .img-radius {
