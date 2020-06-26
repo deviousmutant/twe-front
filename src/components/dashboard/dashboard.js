@@ -65,6 +65,7 @@ function Dashboard() {
                             pageName={page}
                             handleChangeFunc={HandleChange}
                             signout={signOut}
+                            valid={valid}
 
                         />
                         <Main

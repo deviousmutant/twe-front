@@ -8,9 +8,8 @@ function Content(props) {
         props.HandleOutput(data)
     }
     React.useEffect(() => {
-        axios.get('https://thepc.herokuapp.com/api/articles/list', {
+        axios.get('https://thepc.herokuapp.com/api/articles/list?sortBy=createdAt:desc ', {
             headers: {
-                // 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': 'Bearer ' + auth
             }
         })

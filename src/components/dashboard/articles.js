@@ -31,10 +31,7 @@ function Articles(props) {
                 headers: {
                     'Authorization': 'Bearer ' + auth
                 }
-            }, qs.stringify({})).then(response => {
-                console.log(response);
-
-            }).catch(error => {
+            }, qs.stringify({})).catch(error => {
                 console.log(error);
 
             })
@@ -44,15 +41,15 @@ function Articles(props) {
 
     useEffect(() => {
         function HandleAPI() {
-            let url = "https://thepc.herokuapp.com/api/articles/select/edition" + articleID
-            axios.patch(url, {
+            let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
+            axios.patch(url, qs.stringify({
+                approved: true,
+                edition: 20
+            }), {
                 headers: {
                     'Authorization': 'Bearer ' + auth
                 }
-            }, qs.stringify({
-                approval: true,
-                edition: 20
-            })).then(response => {
+            }).then(response => {
                 console.log(response);
 
             }).catch(error => {
@@ -66,7 +63,7 @@ function Articles(props) {
 
     function createCard(articleItem) {
         return <Card title={articleItem.atitle} content={articleItem.acontent} articleID={articleItem._id}
-            HandleApprove={HandleApprove} HandleRemove={HandleRemove} valid={props.valid}
+            HandleApprove={HandleApprove} HandleRemove={HandleRemove} valid={props.valid} approvalStatus={articleItem.approved}
         />
     }
     return (

@@ -22,14 +22,7 @@ function Sidebar(props) {
                         name="Dashboard"
                         redirect={redirect}
                     />
-                    <Item
-                        name="Previous Editions"
-                        redirect={redirect}
-                    />
-                    <Item
-                        name="Team members"
-                        redirect={redirect}
-                    />
+                    {props.valid === "admin" && <Item name="New Edition" redirect={redirect} />}
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Editorial</span>
@@ -40,11 +33,7 @@ function Sidebar(props) {
                         redirect={redirect}
                     />
                     <Item
-                        name="Articles"
-                        redirect={redirect}
-                    />
-                    <Item
-                        name="New Edition"
+                        name="Your Articles"
                         redirect={redirect}
                     />
                 </ul>
