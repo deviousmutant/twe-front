@@ -9,6 +9,10 @@
 .card-article {
   border: none;
 }
+.card-body {
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
 .line {
   width: 3rem;
   margin: 1rem auto 0 !important;

@@ -31,7 +31,7 @@ function Card(props) {
         <div className="card card-article">
             <img src="img/card_img.jpg" className="card-img-top no-gutters" alt="..." />
             <div className="card-body">
-                {approvalStatus === true ? <span class="badge badge-pill badge-success mb-2 text-align-right">Approved</span> : approvalStatus === "Deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning">Pending Approval</span>}
+                {approvalStatus === true ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approvalStatus === "Deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Approval Pending</span>}
                 <h5 className="card-title">{props.title} </h5>
                 <p className="card-text">{cardContent + "     "}
                     <span className="read-more text-primary" onClick={cardContentToggle} >{readState}</span>
@@ -43,6 +43,7 @@ function Card(props) {
                     <img className="icon second-icon" src="img/close.svg" alt="..." onClick={handleClick} name="Remove" />
                     <img className="icon third-icon" src="img/comment (6).svg" alt="..." />
                 </small>
+
             </div>
         </div>
     )

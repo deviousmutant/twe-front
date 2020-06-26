@@ -44,7 +44,7 @@ function Articles(props) {
             let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
             axios.patch(url, qs.stringify({
                 approved: true,
-                edition: 20
+                edition: Cookies.get("enum")
             }), {
                 headers: {
                     'Authorization': 'Bearer ' + auth

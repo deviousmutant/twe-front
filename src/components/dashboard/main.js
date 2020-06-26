@@ -12,8 +12,6 @@ function Main(props) {
         setTitle(page)
     }, [page])
 
-
-
     switch (page) {
         case "Your Articles":
             {
@@ -42,7 +40,7 @@ function Main(props) {
                 return (
                     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                         <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
-                            <h1> {title}</h1>
+                            <h1 className="form-header"> {title}</h1>
                         </div>
                         {<Hov />}
                     </main>
@@ -53,7 +51,7 @@ function Main(props) {
                 return (
                     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                         <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
-                            <h1> {title}</h1>
+                            <h1 className="form-header"> {title}</h1>
                         </div>
                         {<NewEdition />}
                     </main>

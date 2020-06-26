@@ -10,8 +10,6 @@ function NewEdition() {
         enumber: "",
         enname: "",
     }
-
-
     const [editionTitle, setTitle] = React.useState();
     const [editionNumber, setNumber] = React.useState();
     const [ready, setReady] = React.useState(false);
@@ -41,6 +39,7 @@ function NewEdition() {
         })
             .then(response => {
                 console.log(response)
+                Cookie.set("enum", finalEdition.enumber)
 
             })
             .catch(error => {
@@ -53,7 +52,7 @@ function NewEdition() {
         <div>
             <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} />
             <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} />
-            <Button nclassAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
+            <Button classAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
 
         </div>
 
