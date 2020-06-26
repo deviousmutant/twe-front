@@ -3,6 +3,7 @@ import Cards from './cards'
 import SubmitForm from './submitForm'
 import Articles from "./articles"
 import Hov from "./hov"
+import NewEdition from './newedition'
 
 function Main(props) {
     const [title, setTitle] = React.useState()
@@ -10,6 +11,8 @@ function Main(props) {
     React.useEffect(() => {
         setTitle(page)
     }, [page])
+
+    
 
     switch (page) {
         case "Articles":
@@ -42,6 +45,17 @@ function Main(props) {
                             <h1> {title}</h1>
                         </div>
                         {<Hov />}
+                    </main>
+                )
+            }
+        case "New Edition":
+            {
+                return (
+                    <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                        <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
+                            <h1> {title}</h1>
+                        </div>
+                        {<NewEdition />}
                     </main>
                 )
             }

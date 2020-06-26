@@ -5,7 +5,9 @@ var dropDown= document.getElementsByClassName("navbar-toggler");
 
 function Item(props) {
     function handleClick() {
-        dropDown[0].click();
+        var x = window.matchMedia("(max-width: 700px)")
+        if (x.matches) {
+        dropDown[0].click();}
         props.redirect(props.name);
     } 
            
