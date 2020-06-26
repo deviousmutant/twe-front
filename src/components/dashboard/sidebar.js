@@ -44,6 +44,10 @@ function Sidebar(props) {
                         name="Articles"
                         redirect={redirect}
                     />
+                    <Item
+                        name="New Edition"
+                        redirect={redirect}
+                    />
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Humans Of VIT</span>
