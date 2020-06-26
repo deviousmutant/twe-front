@@ -12,7 +12,7 @@ function Input(props) {
         )
     } else {
         return (
-            <input type={props.type} placeholder={props.placeholder} name={props.name} rows={props.rows} onChange={handleChange} value={props.value} />
+            <input type={props.type} placeholder={props.placeholder} name={props.name} onChange={handleChange} value={props.value} />
         )
     }
 
