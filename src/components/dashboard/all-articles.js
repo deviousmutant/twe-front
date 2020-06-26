@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Card from './article-card'
-import Content from './content'
+import AllContent from './all-content'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import qs from 'qs'
 
-function Articles(props) {
+function AllArticles(props) {
     const [dataArr, setDataArr] = useState([]);
     const auth = Cookies.get("auth")
     const [statusRemoval, setStatusRemoval] = useState(false)
@@ -70,7 +70,7 @@ function Articles(props) {
         <div>
             <div className="card-columns" style={{ itemAlign: "top" }}>
                 {dataArr.map(createCard)}
-                <Content HandleOutput={HandleOutput} />
+                <AllContent HandleOutput={HandleOutput} />
             </div>
         </div>
 
@@ -78,4 +78,4 @@ function Articles(props) {
     )
 }
 
-export default Articles;
+export default AllArticles;
