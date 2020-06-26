@@ -8,7 +8,7 @@ import axios from 'axios'
 import qs from 'qs'
 import Loader from '../error/loader'
 
-function Dashboard(props) {
+function Dashboard() {
     const name = Cookies.get("name")
     const auth = Cookies.get("auth")
 
@@ -65,11 +65,14 @@ function Dashboard(props) {
                             pageName={page}
                             handleChangeFunc={HandleChange}
                             signout={signOut}
+                            valid={valid}
+
                         />
                         <Main
                             pageName={page}
                             handleChangeFunc={HandleChange}
                             name={name}
+                            valid={valid}
                         />
                     </div>
                 </div>

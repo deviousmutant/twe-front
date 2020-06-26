@@ -5,24 +5,21 @@ import axios from 'axios'
 import qs from 'qs'
 import Cookie from 'js-cookie'
 
-function NewEdition()
-{   
-    const finalEdition={
-        ename:"",
-        enumber:"",
+function NewEdition() {
+    const finalEdition = {
+        enumber: "",
+        enname: "",
     }
+    const [editionTitle, setTitle] = React.useState();
+    const [editionNumber, setNumber] = React.useState();
+    const [ready, setReady] = React.useState(false);
 
 
-    const [editionTitle,setTitle]=React.useState();
-    const [editionNumber,setNumber]=React.useState();
-
-
-    function handleChange(event)
-    {
+    function handleChange(event) {
         const title = event.target.name;
         const value = event.target.value;
-        title==="title" ? setTitle(value) : setNumber(value);
-         
+        title === "title" ? setTitle(value) : setNumber(value);
+
     }
 
     finalEdition.ename = editionTitle;
@@ -30,10 +27,11 @@ function NewEdition()
 
     function handleClick() {
         console.log(finalEdition);
+        setReady(previous => !previous)
     }
-    
+
     React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api/edition/create/',qs.stringify(finalEdition),{
+        axios.post('http://thepc.herokuapp.com/api/edition/create/', qs.stringify(finalEdition), {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': 'Bearer ' + Cookie.get("auth")
@@ -41,21 +39,20 @@ function NewEdition()
         })
             .then(response => {
                 console.log(response)
-                setTitle("")
-                setNumber("")
+                Cookie.set("enum", finalEdition.enumber)
 
             })
             .catch(error => {
                 console.log(error.response)
             });
-    }, [])
+    }, [ready])
 
 
-    return(
+    return (
         <div>
             <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} />
             <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} />
-            <Button nclassAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
+            <Button classAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
 
         </div>
 

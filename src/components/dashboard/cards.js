@@ -17,6 +17,7 @@ function Cards(props) {
         <div>
             <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4 animate__animated animate__fadeIn">
                 <h1 className="form-header"> {greeting} {props.name}</h1>
+                <h4 class="text-muted"><em>This page is currently for representative purposes only!</em></h4>
             </div>
             <div className="card-columns ">
                 <div className="card bg-success text-white p-3 animate__animated animate__flipInX">
