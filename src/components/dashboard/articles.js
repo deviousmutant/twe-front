@@ -66,7 +66,7 @@ function Articles(props) {
 
     function createCard(articleItem) {
         return <Card title={articleItem.atitle} content={articleItem.acontent} articleID={articleItem._id}
-            HandleApprove={HandleApprove} HandleRemove={HandleRemove} value={props.value}
+            HandleApprove={HandleApprove} HandleRemove={HandleRemove} valid={props.valid}
         />
     }
     return (

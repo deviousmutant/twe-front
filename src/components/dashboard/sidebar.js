@@ -3,7 +3,6 @@ import Item from './sidebar-item'
 import Cookies from 'js-cookie'
 
 function Sidebar(props) {
-
     function redirect(event) {
         props.handleChangeFunc(event)
     }
@@ -43,7 +42,6 @@ function Sidebar(props) {
                     <Item
                         name="Articles"
                         redirect={redirect}
-                        valid={props.valid}
                     />
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">

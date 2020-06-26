@@ -19,7 +19,7 @@ function Main(props) {
                         <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
                             <h1 className="form-header"> {title}</h1>
                         </div>
-                        {<Articles />}
+                        {<Articles valid={props.valid} />}
                     </main>
                 )
             }

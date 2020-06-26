@@ -65,12 +65,13 @@ function Dashboard() {
                             pageName={page}
                             handleChangeFunc={HandleChange}
                             signout={signOut}
-                            valid={valid}
+
                         />
                         <Main
                             pageName={page}
                             handleChangeFunc={HandleChange}
                             name={name}
+                            valid={valid}
                         />
                     </div>
                 </div>
