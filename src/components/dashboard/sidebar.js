@@ -36,6 +36,7 @@ function Sidebar(props) {
                         name="Your Articles"
                         redirect={redirect}
                     />
+                    {props.valid === "admin" && <Item name="All Articles" redirect={redirect} />}
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Humans Of VIT</span>
