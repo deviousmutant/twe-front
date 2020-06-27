@@ -9,7 +9,7 @@ function FinalEdition(props) {
             <Hero />
             <News content={props.content} />
             <ArticleHome data={props.content}/>
-            
+           </div> 
     )
 }
 
