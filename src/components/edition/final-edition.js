@@ -10,13 +10,6 @@ function FinalEdition(props) {
             <News content={props.content} />
             <ArticleHome data={props.content}/>
             
-function FinalEdition() {
-    return (
-        <div>
-            <Hero />
-            <News />
-            <ArticleHome />
-        </div>
     )
 }
 
