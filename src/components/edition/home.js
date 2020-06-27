@@ -3,6 +3,7 @@ import './edition.css'
 import Input from '../form/Input'
 import Primary from './primary'
 import Button from '../form/Button'
+import FinalEdition from './final-edition'
 
 function Home() {
     const [ednum, setEdNum] = React.useState("")
@@ -24,7 +25,10 @@ function Home() {
         )
     } else {
         return (
-            <Primary edition={ednum} />
+            <div>
+                <Primary edition={ednum} />
+                <FinalEdition />
+            </div>
         )
     }
 
