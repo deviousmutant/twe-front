@@ -1,16 +1,15 @@
 import React from 'react'
 
-function NewsCard() {
+function NewsCard(props) {
     return (
-        <div class="swiper-slide">
-            <div class="swiper-img">
-                <img class="card-img" src="style/cardimg.jpg" />
-            </div>
-            <div class="swiper-details">
-                <h3> News Headline </h3>
+        <div class="card bg-primary" style={{ width: "18rem" }}>
+            <img src="..." class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h1 class="card-title">{props.name}</h1>
             </div>
         </div>
     )
+
 }
 
 export default NewsCard

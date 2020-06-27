@@ -28,7 +28,7 @@ function Card(props) {
         }
     }
     return (
-        <div className="card card-article">
+        <div className="card card-article card-shadow-radius">
             <img src="img/card_img.jpg" className="card-img-top no-gutters" alt="..." />
             <div className="card-body">
                 {approvalStatus === true ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approvalStatus === "Deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Approval Pending</span>}

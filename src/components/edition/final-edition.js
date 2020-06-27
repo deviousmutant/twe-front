@@ -3,12 +3,13 @@ import Hero from './hero'
 import News from './news'
 import ArticleHome from './article-home'
 
-function FinalEdition() {
+
+function FinalEdition(props) {
     return (
         <div>
-            <Hero />
-            <News />
-            <ArticleHome />
+            <Hero enum={props.enum} />
+            <News content={props.content} />
+            <ArticleHome data={props.content} />
         </div>
     )
 }
