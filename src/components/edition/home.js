@@ -26,8 +26,8 @@ function Home() {
     } else {
         return (
             <div>
-            <Primary edition={ednum} />
-            
+                <Primary edition={ednum} />
+                <FinalEdition />
             </div>
         )
     }

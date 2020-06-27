@@ -1,17 +1,14 @@
 body {
   font-size: 0.875rem;
 }
-
 .feather {
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
 }
-
 /*
    * Sidebar
    */
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -20,9 +17,8 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 4em 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
-  background-color: #0f0f1f;
+  background-color: #323232;
 }
-
 @media (max-width: 767.98px) {
   .sidebar {
     /*top: 5rem; */
@@ -35,16 +31,14 @@ body {
   padding-top: auto;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  background-color: #0f0f1f;
+  background-color: #0a0a0a;
 }
-
 @supports ((position: -webkit-sticky) or (position: sticky)) {
   .sidebar-sticky {
     position: -webkit-sticky;
     position: sticky;
   }
 }
-
 .sidebar .nav-link {
   font-weight: 500;
   color: #fff;
@@ -54,18 +48,18 @@ body {
 
 .sidebar .nav-link .feather {
   margin-right: 4px;
-  color: #ffbd69;
+  color: #ff1e56;
 }
 
-.sidebar .nav-link.active {
-  color: #ffbd69;
+.sidebar .nav-link:active {
+  color: #ff1e56;
 }
-.sidebar .nav-link.hover {
-  color: #ffbd69;
+.sidebar .nav-link:hover {
+  color: #ff1e56;
 }
 
 .sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
+.sidebar .nav-link:active .feather {
   color: inherit;
 }
 
@@ -83,14 +77,14 @@ body {
   align-items: center;
   font-size: 1.3rem;
   font-family: Circular;
-  background-color: #0f0f1f;
+  background-color: #0a0a0a;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
   height: 4rem;
   color: #fff !important;
 }
 .navbar-brand:hover,
 .navbar-brand:active {
-  color: #ffbd69;
+  color: #ff1e56;
 }
 .navbar-nav .nav-link {
   color: #fff;
@@ -103,7 +97,7 @@ body {
 .navbar {
   height: 4rem;
   background-color: #000000;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23130033' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23130033' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E"); */
 }
 .navbar .form-control {
   padding: 0.75rem 1rem;
@@ -122,7 +116,7 @@ body {
 }
 .dashboard {
   background-color: #000000;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23130033' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23130033' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E"); */
   min-height: 100vh;
   position: relative;
 }
@@ -134,14 +128,13 @@ body {
 }
 .nav-text:hover,
 .nav-text:active {
-  color: #ffbd69;
+  color: #ff1e56;
   text-decoration: none !important;
 }
 .sidebar-footer {
   margin-bottom: 0;
   color: #fff;
 }
-
 .card-title {
   font-size: 1.5rem;
 }
@@ -154,7 +147,7 @@ body {
 input,
 textarea {
   border-radius: 10px;
-  border: 3px solid #ffbd69;
+  border: 3px solid #ff1e56;
 }
 input:focus,
 input:hover,
@@ -162,8 +155,8 @@ textarea:focus,
 textarea:hover {
   outline: none;
   border-radius: 10px;
-  border: 3px solid #ffbd69;
-  background-color: #ffbd6980;
+  border: 3px solid #ff1e56;
+  background-color: #ff1e5680;
   color: #fff;
 }
 select {
