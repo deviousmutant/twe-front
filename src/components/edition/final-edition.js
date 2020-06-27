@@ -4,11 +4,13 @@ import News from './news'
 import ArticleHome from './article-home'
 
 
-function FinalEdition() {
+function FinalEdition(props) {
     return (
         <div>
             <Hero />
-            <News />
+            <News content={props.content} />
+            <ArticleHome data={props.content}/>
+            
         </div>
     )
 }
