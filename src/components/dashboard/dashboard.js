@@ -41,8 +41,6 @@ function Dashboard() {
             }
         }).then(response => {
             handleAuth(response.data)
-        }).catch(error => {
-            console.log(error)
         })
     })
     if (valid === "false") {

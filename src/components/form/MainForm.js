@@ -4,9 +4,11 @@ import Button from './Button'
 import axios from 'axios'
 import qs from 'qs'
 import md5 from 'md5'
+import FormSuccess from './FormSuccess'
 
 function Form(props) {
     const status = props.status;
+    const [success, setSuccess] = React.useState(false)
 
     const [regform, setRegform] = React.useState({
         name: "",
@@ -71,41 +73,59 @@ function Form(props) {
     function handleSubmit() {
         if (status === "Register") {
             hashPass(rForm)
-            setRegister(previous => !previous)
+            setSuccess(101)
+            setRegister(true)
         } else if (status === "Login") {
             hashPass(lForm)
-            setLogin(previous => !previous)
+            setSuccess(101)
+            setLogin(true)
         }
     }
     function handleRedirect(status, value, auth) {
         props.setAuth(status, value, auth)
     }
-  
-    React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api/users/signup', qs.stringify(rForm), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+    function handleSuccess(statusCode) {
+        setSuccess(statusCode);
+        if (statusCode === 400) {
+            if (status === "Register") {
+                setRegister(false)
+            } else if (status === "Login") {
+                setLogin(false)
             }
-        })
-            .then(response => {
-                response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
+        }
 
+    }
+
+    React.useEffect(() => {
+        if (register === true) {
+            axios.post('https://thepc.herokuapp.com/api/users/signup', qs.stringify(rForm), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             })
-            .catch(error => {
-                console.log(error.response)
-            });
+                .then(response => {
+                    handleSuccess(response.status)
+                })
+                .catch(error => {
+                    handleSuccess(error.response.status)
+                });
+        }
     }, [register])
 
     React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api/users/login', qs.stringify(lForm), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        })
-            .then(response => {
-                response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
+        if (login === true) {
+            axios.post('https://thepc.herokuapp.com/api/users/login', qs.stringify(lForm), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
             })
-            
+                .then(response => {
+                    handleSuccess(response.status)
+                    response.status === 200 && handleRedirect(true, response.data.userFound.name, response.data.token)
+                }).catch(error => {
+                    handleSuccess(error.response.status)
+                })
+        }
     }, [login])
 
     return (
@@ -125,6 +145,7 @@ function Form(props) {
                         <Input type="password" name="cnfPass" placeholder="Confirm Password" onChange={handleChange} />
                         <Button classAdd={"btn-solid"} name={status} handleClick={handleSubmit} />
                         <p className="small" onClick={redirect}> Have an account? </p>
+                        <FormSuccess success={success} />
                     </div>
                     :
                     <div>
@@ -132,6 +153,7 @@ function Form(props) {
                         <Input type="password" name="passLogin" placeholder="Password" onChange={handleChange} />
                         <Button classAdd={"btn-solid"} name={status} handleClick={handleSubmit} />
                         <p className="small" onClick={redirect}> Don't have an account? </p>
+                        <FormSuccess success={success} />
                     </div>
             }
         </div>

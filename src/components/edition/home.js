@@ -1,5 +1,4 @@
 import React from 'react'
-import './edition.css'
 import Input from '../form/Input'
 import Primary from './primary'
 import Button from '../form/Button'

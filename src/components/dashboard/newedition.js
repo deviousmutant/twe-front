@@ -13,6 +13,7 @@ function NewEdition() {
     const [editionTitle, setTitle] = React.useState();
     const [editionNumber, setNumber] = React.useState();
     const [ready, setReady] = React.useState(false);
+    const [success, setSuccess] = React.useState()
 
 
     function handleChange(event) {
@@ -26,25 +27,33 @@ function NewEdition() {
     finalEdition.enumber = editionNumber;
 
     function handleClick() {
-        console.log(finalEdition);
-        setReady(previous => !previous)
+        setSuccess(101)
+        setReady(true)
+    }
+    function HandleSuccess(status) {
+        if (status === 400) {
+            setReady(false)
+        }
+        setSuccess(status);
     }
 
     React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api/edition/create/', qs.stringify(finalEdition), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer ' + Cookie.get("auth")
-            }
-        })
-            .then(response => {
-                console.log(response)
-                Cookie.set("enum", finalEdition.enumber)
-
+        if (ready === true) {
+            axios.post('https://thepc.herokuapp.com/api/edition/create/', qs.stringify(finalEdition), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Bearer ' + Cookie.get("auth")
+                }
             })
-            .catch(error => {
-                console.log(error.response)
-            });
+                .then(response => {
+                    Cookie.set("enum", finalEdition.enumber)
+                    HandleSuccess(response.status)
+
+                })
+                .catch(error => {
+                    console.log(error.response)
+                });
+        }
     }, [ready])
 
 
@@ -53,7 +62,30 @@ function NewEdition() {
             <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} />
             <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} />
             <Button classAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
-
+            {success === 201 ?
+                <div className="alert alert-success alert-dismissible mt-2" role="alert">
+                    New Edition {editionNumber} created!
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                :
+                success === 400 ?
+                    <div className="alert alert-danger alert-dismissible mt-2" role="alert">
+                        Please check your field and try again!
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    :
+                    success === 101 &&
+                    <div className="alert alert-warning alert-dismissible mt-2" role="alert">
+                        Please wait...
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            }
         </div>
 
 

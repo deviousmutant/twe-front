@@ -16,7 +16,7 @@ function SubmitForm() {
     const [content, setContent] = React.useState();
     const [type, setType] = React.useState();
     const [article, setArticle] = React.useState(false);
-    const [success,setSuccess] = React.useState();
+    const [success, setSuccess] = React.useState();
 
     function handleChange(event) {
         const title = event.target.name
@@ -29,61 +29,78 @@ function SubmitForm() {
     finalArticle.atype = type
     finalArticle.acontent = content
     function handleClick() {
-        setArticle(previous => !previous)
-        console.log(finalArticle);
-
+        setSuccess(101)
+        setArticle(true)
     }
 
-    function funcSetSuccess(status)
-    {
+    function funcSetSuccess(status) {
+        if (status === 400) {
+            setArticle(false)
+        }
         setSuccess(status);
     }
 
     React.useEffect(() => {
-        axios.post('http://thepc.herokuapp.com/api/articles', qs.stringify(finalArticle), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Bearer ' + Cookie.get("auth")
-            }
-        })
-            .then(response => {
-                console.log(response)
-                funcSetSuccess(response.status);
-                setTitle("")
-                setContent("")
-
+        if (article === true) {
+            axios.post('https://thepc.herokuapp.com/api/articles', qs.stringify(finalArticle), {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': 'Bearer ' + Cookie.get("auth")
+                }
             })
-            .catch(error => {
-                console.log(error.response)
-            });
+                .then(response => {
+                    funcSetSuccess(response.status);
+
+                })
+                .catch(error => {
+                    funcSetSuccess(error.response.status);
+                });
+        }
+
     }, [article])
 
     return (
         <div>
             <div className="form-group">
-                <Input type="input" name="title" placeholder="Article title" onChange={handleChange} />
+                <Input type="input" name="title" placeholder="Article title" onChange={handleChange} className="dash-input" />
             </div>
             <div className="form-group">
-                <select className="form-control dropdown" onChange={handleChange} name="articleType">
+                <select className="form-control" onChange={handleChange} name="articleType">
                     <option>--- Select Type of Article ---</option>
                     <option value="news">News Article</option>
                     <option value="movie">Movie Review</option>
                     <option value="editorial">Editorial</option>
                     <option value="satire">Satire</option>
-                    <option value="facts">Unspecified</option>
+                    <option value="facts">Facts</option>
                 </select>
             </div>
             <div className="form-group">
-                <Input type="text-area" name="content" placeholder="Article Content" rows="10" onChange={handleChange} />
+                <Input type="text-area" name="content" placeholder="Article Content" rows="10" onChange={handleChange} className="dash-input" />
             </div>
-            <Button classAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
-            {success=="201"&& 
-            <div class="alert alert-success alert-dismissible" role="alert">
-            Article Successfully Submitted
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+            <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={handleClick} />
+            {success === 201 ?
+                <div className="alert alert-success alert-dismissible mt-2" role="alert">
+                    Article Successfully Submitted
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                :
+                success === 400 ?
+                    <div className="alert alert-danger alert-dismissible mt-2" role="alert">
+                        Please check your fields and try again!
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    :
+                    success === 101 &&
+                    <div className="alert alert-warning alert-dismissible mt-2" role="alert">
+                        Please wait...
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
             }
 
         </div>

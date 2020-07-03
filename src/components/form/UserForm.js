@@ -32,7 +32,6 @@ function UserForm(props) {
                         auth={isAuthorized}
                         setAuth={handleAuth}
                     />
-                    {console.log(isAuthorized)}
                     {isAuthorized === true && <Redirect to="/dashboard" />}
                 </div>
             </div>

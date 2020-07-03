@@ -8,11 +8,11 @@ function Input(props) {
 
     if (props.type === "text-area") {
         return (
-            <textarea type={props.type} placeholder={props.placeholder} name={props.name} rows={props.rows} onChange={handleChange} value={props.value} />
+            <textarea type={props.type} placeholder={props.placeholder} name={props.name} rows={props.rows} onChange={handleChange} value={props.value} className={props.className} />
         )
     } else {
         return (
-            <input type={props.type} placeholder={props.placeholder} name={props.name} onChange={handleChange} value={props.value} />
+            <input type={props.type} placeholder={props.placeholder} name={props.name} onChange={handleChange} value={props.value} className={props.className} />
         )
     }
 

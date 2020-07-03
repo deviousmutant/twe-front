@@ -17,15 +17,17 @@ function AllArticles(props) {
     }
     function HandleApprove(name, id) {
         setArticleID(id)
-        setStatusApprove(previous => !previous)
+        setStatusApprove(true)
+
     }
     function HandleRemove(name, id) {
         setArticleID(id)
-        setStatusRemoval(previous => !previous)
+        setStatusRemoval(true)
+
     }
 
     useEffect(() => {
-        function HandleAPI() {
+        if (statusRemoval === true) {
             let url = "https://thepc.herokuapp.com/api/articles/" + articleID
             axios.delete(url, {
                 headers: {
@@ -34,13 +36,14 @@ function AllArticles(props) {
             }, qs.stringify({})).catch(error => {
                 console.log(error);
 
+            }).finally(() => {
+                setStatusRemoval(false)
             })
         }
-        return HandleAPI()
     }, [statusRemoval])
 
     useEffect(() => {
-        function HandleAPI() {
+        if (statusApprove === true) {
             let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
             axios.patch(url, qs.stringify({
                 approved: true,
@@ -49,15 +52,11 @@ function AllArticles(props) {
                 headers: {
                     'Authorization': 'Bearer ' + auth
                 }
-            }).then(response => {
-                console.log(response);
-
             }).catch(error => {
                 console.log(error);
 
             })
         }
-        return HandleAPI()
     }, [statusApprove])
 
 

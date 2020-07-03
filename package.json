@@ -1,7 +1,7 @@
 {
   "name": "client",
-  "version": "0.2.0",
-  "homepage": "http://twe.thepcvit.com/",
+  "version": "1.0.0-beta2",
+  "homepage": "https://thepcvit.com/twe",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
