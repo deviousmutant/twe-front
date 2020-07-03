@@ -134,6 +134,7 @@ body {
 .sidebar-footer {
   margin-bottom: 0;
   color: #fff;
+  z-index: 400;
 }
 .card-title {
   font-size: 1.5rem;

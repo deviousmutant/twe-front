@@ -67,7 +67,7 @@ function Sidebar(props) {
                         redirect={handleClick}
                     />
                 </ul>
-                <p className="sidebar-footer"> &copy; 2020 THEPC</p>
+                <p className="sidebar-footer">v1.2</p>
             </div>
 
         </nav>

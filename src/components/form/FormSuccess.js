@@ -2,6 +2,15 @@ import React from 'react'
 
 function FormSuccess(props) {
     const success = props.success
+    const [message, setMessage] = React.useState("")
+    React.useEffect(() => {
+        if (props.type === "Register") {
+            setMessage("Password must be more than 7 characters")
+        } else if (props.type === "Login") {
+            setMessage("Incorrect Credentials")
+        }
+    }, [props.type])
+
     return (
         <center>
             <div>
@@ -15,8 +24,8 @@ function FormSuccess(props) {
                     :
                     success === 400 ?
                         <div className="alert alert-danger alert-dismissible alert-form" role="alert">
-                            Please check your fields and try again! Password must be 7 characters long
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            {message}
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>

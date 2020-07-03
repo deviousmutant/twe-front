@@ -145,7 +145,7 @@ function Form(props) {
                         <Input type="password" name="cnfPass" placeholder="Confirm Password" onChange={handleChange} />
                         <Button classAdd={"btn-solid"} name={status} handleClick={handleSubmit} />
                         <p className="small" onClick={redirect}> Have an account? </p>
-                        <FormSuccess success={success} />
+                        <FormSuccess success={success} type={status} />
                     </div>
                     :
                     <div>
@@ -153,7 +153,7 @@ function Form(props) {
                         <Input type="password" name="passLogin" placeholder="Password" onChange={handleChange} />
                         <Button classAdd={"btn-solid"} name={status} handleClick={handleSubmit} />
                         <p className="small" onClick={redirect}> Don't have an account? </p>
-                        <FormSuccess success={success} />
+                        <FormSuccess success={success} type={status} />
                     </div>
             }
         </div>

@@ -7,13 +7,16 @@ import qs from 'qs'
 
 function AllArticles(props) {
     const [dataArr, setDataArr] = useState([]);
+    const [loading, setLoading] = useState(true)
     const auth = Cookies.get("auth")
     const [statusRemoval, setStatusRemoval] = useState(false)
     const [statusApprove, setStatusApprove] = useState(false)
     const [articleID, setArticleID] = useState("")
 
     function HandleOutput(data) {
+        setLoading(false)
         setDataArr(data);
+
     }
     function HandleApprove(name, id) {
         setArticleID(id)
@@ -67,10 +70,17 @@ function AllArticles(props) {
     }
     return (
         <div>
-            <div className="card-columns" style={{ itemAlign: "top" }}>
-                {dataArr.map(createCard)}
-                <AllContent HandleOutput={HandleOutput} />
-            </div>
+            <AllContent HandleOutput={HandleOutput} />
+            {loading === true ?
+                <div className="alert alert-warning alert-dismissible mt-2" role="alert">
+                    Please wait...
+                </div>
+                :
+                <div className="card-columns" style={{ itemAlign: "top" }}>
+                    {dataArr.map(createCard)}
+
+                </div>
+            }
         </div>
 
 
