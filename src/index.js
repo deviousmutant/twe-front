@@ -4,7 +4,6 @@ import App from './App';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Dashboard from './components/dashboard/dashboard'
 import UserForm from './components/form/UserForm'
-import Notfound from './components/error/NotFound'
 import Home from './components/edition/home'
 
 
@@ -16,7 +15,6 @@ const routing = (
         <Route path="/welcome" component={UserForm} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/edition" component={Home} />
-        <Route component={Notfound} />
       </Switch>
     </div>
   </Router>
