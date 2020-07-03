@@ -14,8 +14,6 @@ function Content(props) {
             }
         })
             .then(response => {
-                console.log(response.data);
-
                 HandleOutput(response.data);
             })
             .catch(error => {
