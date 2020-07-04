@@ -59,9 +59,9 @@ function NewEdition() {
 
     return (
         <div>
-            <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} />
-            <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} />
-            <Button classAdd={"btn-solid"} name={"Submit"} handleClick={handleClick} />
+            <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} className="dash-input" />
+            <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} className="dash-input" />
+            <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={handleClick} />
             {success === 201 ?
                 <div className="alert alert-success alert-dismissible mt-2" role="alert">
                     New Edition {editionNumber} created!

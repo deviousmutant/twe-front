@@ -8,7 +8,7 @@ import Home from './components/edition/home'
 
 
 const routing = (
-  <Router basename={'/twe'}>
+  <Router>
     <div>
       <Switch>
         <Route exact path="/" component={App} />

@@ -160,7 +160,8 @@ textarea:hover {
 .dash-input,
 .dash-input:hover,
 .dash-input:active,
-.dash-input:focus {
+.dash-input:focus,
+option {
   width: 100%;
 }
 select {
