@@ -25,7 +25,7 @@ function Sidebar(props) {
                     {props.valid === "admin" && <Item name="New Edition" redirect={redirect} />}
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Editorial</span>
+                    <span>Articles</span>
                 </h6>
                 <ul className="nav flex-column mb-2">
                     <Item

@@ -9,9 +9,11 @@ function NewEdition() {
     const finalEdition = {
         enumber: "",
         enname: "",
+        edesc: ""
     }
     const [editionTitle, setTitle] = React.useState();
     const [editionNumber, setNumber] = React.useState();
+    const [editionDescription, setDesc] = React.useState();
     const [ready, setReady] = React.useState(false);
     const [success, setSuccess] = React.useState()
 
@@ -19,12 +21,13 @@ function NewEdition() {
     function handleChange(event) {
         const title = event.target.name;
         const value = event.target.value;
-        title === "title" ? setTitle(value) : setNumber(value);
+        title === "title" ? setTitle(value) : title === "edno" ? setNumber(value) : setDesc(value);
 
     }
 
     finalEdition.ename = editionTitle;
     finalEdition.enumber = editionNumber;
+    finalEdition.edesc = editionDescription;
 
     function handleClick() {
         setSuccess(101)
@@ -59,8 +62,9 @@ function NewEdition() {
 
     return (
         <div>
-            <Input type="text-area" name="title" placeholder="Title" rows="1" onChange={handleChange} className="dash-input" />
-            <Input type="text-area" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} className="dash-input" />
+            <Input type="input" name="title" placeholder="Title" rows="1" onChange={handleChange} className="dash-input" />
+            <Input type="input" name="edno" placeholder="Edition Number" rows="1" onChange={handleChange} className="dash-input" />
+            <Input type="text-area" name="edesc" placeholder="Edition Description (50-60 words)" rows="5" onChange={handleChange} className="dash-input" />
             <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={handleClick} />
             {success === 201 ?
                 <div className="alert alert-success alert-dismissible mt-2" role="alert">

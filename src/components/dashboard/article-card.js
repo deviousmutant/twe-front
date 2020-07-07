@@ -1,52 +1,129 @@
 import React, { useState } from 'react'
-
+import _ from "lodash"
+import axios from "axios"
+import Cookies from "js-cookie"
+import qs from "qs"
 
 function Card(props) {
-
-    var [cardContent, setCardContent] = useState(props.content.substring(0, 99) + "...");
-    var [readState, setReadState] = useState("Read More");
-    const [approvalStatus, setApprovalStatus] = useState(props.approvalStatus)
+    const [cardContent, setCardContent] = useState(props.content.substring(0, 99) + " ...");
+    const [readState, setReadState] = useState("Read More");
+    const auth = Cookies.get("auth")
+    const [statusRemoval, setStatusRemoval] = useState(false)
+    const [statusApprove, setStatusApprove] = useState(false)
+    const approvalStatus = props.approvalStatus
+    const [articleID, setArticleID] = useState("")
+    const [approved, setApproved] = useState(false)
     function cardContentToggle() {
         if (readState === "Read More") {
             setCardContent(props.content);
             setReadState("Read Less");
         } else {
-            setCardContent(props.content.substring(0, 99) + "...");
+            setCardContent(props.content.substring(0, 99) + " ...");
             setReadState("Read More");
         }
     }
+    function HandleApprove(name, id) {
+        setArticleID(id)
+        name === "reject" ? setStatusApprove("reject") : setStatusApprove(true)
+
+    }
+    function HandleRemove(name, id) {
+        setArticleID(id)
+        setStatusRemoval(true)
+
+    }
+
+    React.useEffect(() => {
+        if (statusRemoval === true) {
+            let url = "https://thepc.herokuapp.com/api/articles/" + articleID
+            axios.delete(url, {
+                headers: {
+                    'Authorization': 'Bearer ' + auth
+                }
+            }, qs.stringify({})).then((response) => {
+                response.status === 200 && setApproved("deleted")
+            }).catch(error => {
+                console.log(error);
+
+            }).finally(() => {
+                setStatusRemoval(false)
+            })
+        }
+    }, [statusRemoval])
+
+    React.useEffect(() => {
+        if (statusApprove === true) {
+            let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
+            axios.patch(url, qs.stringify({
+                approved: "approved",
+                edition: Cookies.get("enum")
+            }), {
+                headers: {
+                    'Authorization': 'Bearer ' + auth
+                }
+            }).then((response) => {
+                response.status === 200 && setApproved("approved")
+            }).catch(error => {
+                console.log(error);
+            }).finally(setStatusApprove(false))
+        } else if (statusApprove === "reject") {
+            let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
+            axios.patch(url, qs.stringify({
+                approved: "rejected",
+                edition: Cookies.get("enum")
+            }), {
+                headers: {
+                    'Authorization': 'Bearer ' + auth
+                }
+            }).then((response) => {
+                response.status === 200 && setApproved("rejected")
+            }).catch(error => {
+                console.log(error);
+            }).finally(setStatusApprove(false))
+        }
+    }, [statusApprove])
     function handleClick(event) {
         const name = event.target.name
         const title = props.title
-        const id = props.articleID
+        const id = props.articleID;
+        setApproved("working")
         if (name === "Approve") {
-            props.HandleApprove(title, id)
-            setApprovalStatus(true)
-        } else if (name === "Remove") {
-            props.HandleRemove(title, id)
-            setApprovalStatus("Deleted")
+            setApproved("working")
+            HandleApprove(title, id)
+        } else if (name === "Reject") {
+            setApproved("working")
+            HandleApprove("reject", id)
+        } else if (name === "Delete") {
+            setApproved("working")
+            HandleRemove(title, id)
         }
+
     }
     return (
         <div className="card card-article ">
             <img src="img/card_img.jpg" className="card-img-top no-gutters" alt="..." />
             <div className="card-body">
-                {approvalStatus === true ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approvalStatus === "Deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Approval Pending</span>}
+                <span class="badge badge-pill badge-dark mb-2 mr-1">{_.upperCase(props.type)}</span>
+                {/* {(approvalStatus === "approved" || approved === true) && (approved !== "deleted" || approved !== "working" || approved !== "rejected") ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approvalStatus === "rejected" || approved === "rejected" ? <span class="badge badge-pill badge-danger mb-2">Rejected</span> : approved === "working" ? <span class="badge badge-pill badge-info mb-2">...</span> : approved === "deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Approval Pending</span>} */}
+                {(approvalStatus === "approved" || approved === "approved") && approved !== "rejected" && approved !== "working" && approved !== "deleted" ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approved === "working" ? <span class="badge badge-pill badge-info mb-2">...</span> : approvalStatus === "rejected" || approved === "rejected" ? <span class="badge badge-pill badge-danger mb-2">Rejected</span> : approved === "deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Pending Approval</span>}
+
                 <h5 className="card-title">{props.title} </h5>
+                <small><p className="card-text text-muted mt-0">{props.author}</p></small>
                 <p className="card-text">{cardContent + "     "}
                     <span className="read-more text-primary" onClick={cardContentToggle} >{readState}</span>
                 </p>
             </div>
             <div className="card-footer card-footer-article">
-                <small className="text-muted">
-                    {props.valid === "admin" && approvalStatus === false && <img className="icon first-icon" src="img/check.svg" alt="..." onClick={handleClick} name="Approve" />}
-                    <img className="icon second-icon" src="img/close.svg" alt="..." onClick={handleClick} name="Remove" />
-                    <img className="icon third-icon" src="img/comment (6).svg" alt="..." />
-                </small>
-
+                {props.valid === "admin" && (approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") &&
+                    <img src="/icons/check.svg" className="icon" alt="" width="32" height="32" title="Approval" onClick={handleClick} name="Approve" />
+                }
+                <img src="/icons/X.svg" className="icon" alt="" width="32" height="32" title="Rejection" onClick={handleClick} name="Reject" />
+                {Cookies.get("name") === props.author &&
+                    <img src="/icons/Trash.svg" className="icon" alt="" width="25" height="25" title="Deletion" onClick={handleClick} name="Delete" />
+                }
             </div>
         </div>
     )
 }
-
+{/* <img className="icon first-icon" src="img/check.svg" alt="..." onClick={handleClick} name="Approve" /> */ }
 export default Card;

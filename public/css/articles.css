@@ -27,28 +27,8 @@
 }
 
 .icon {
-  width: 1.2rem;
-  margin-left: 0.6rem;
-  margin-right: 0.6rem;
   cursor: pointer;
 }
-
-.first-icon {
-  margin-left: 0em;
-}
-
-.second-icon {
-  width: 1.1rem;
-}
-
-.third-icon {
-  width: 1.5rem;
-}
-.row-changes {
-  width: auto;
-  align-items: baseline;
-}
-
 .img-radius {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;

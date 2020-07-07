@@ -6,7 +6,6 @@ import Dashboard from './components/dashboard/dashboard'
 import UserForm from './components/form/UserForm'
 import Home from './components/edition/home'
 
-
 const routing = (
   <Router>
     <div>

@@ -65,7 +65,7 @@ function Main(props) {
                         <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
                             <h1 className="form-header"> {title}</h1>
                         </div>
-                        {<AllArticles />}
+                        {<AllArticles valid={props.valid} />}
                     </main>
                 )
             }
