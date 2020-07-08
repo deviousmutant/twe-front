@@ -56,7 +56,7 @@ function Card(props) {
             let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
             axios.patch(url, qs.stringify({
                 approved: "approved",
-                edition: Cookies.get("enum")
+                edition: Cookies.get("enumber")
             }), {
                 headers: {
                     'Authorization': 'Bearer ' + auth
@@ -70,7 +70,7 @@ function Card(props) {
             let url = "https://thepc.herokuapp.com/api/articles/select/edition/" + articleID
             axios.patch(url, qs.stringify({
                 approved: "rejected",
-                edition: Cookies.get("enum")
+                edition: Cookies.get("enumber")
             }), {
                 headers: {
                     'Authorization': 'Bearer ' + auth
@@ -117,10 +117,10 @@ function Card(props) {
                 {props.valid === "admin" && (approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") &&
                     <img src="/icons/check.svg" className="icon" alt="" width="32" height="32" title="Approval" onClick={handleClick} name="Approve" />
                 }
-                <img src="/icons/X.svg" className="icon" alt="" width="32" height="32" title="Rejection" onClick={handleClick} name="Reject" />
-                {Cookies.get("name") === props.author &&
-                    <img src="/icons/Trash.svg" className="icon" alt="" width="25" height="25" title="Deletion" onClick={handleClick} name="Delete" />
+                {props.valid === "admin" && (approvalStatus === "pending" || approvalStatus === "approved" || approved === "approved") &&
+                    <img src="/icons/X.svg" className="icon" alt="" width="32" height="32" title="Rejection" onClick={handleClick} name="Reject" />
                 }
+                <img src="/icons/Trash.svg" className="icon" alt="" width="25" height="25" title="Deletion" onClick={handleClick} name="Delete" />
             </div>
         </div>
     )

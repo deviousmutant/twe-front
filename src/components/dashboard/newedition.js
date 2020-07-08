@@ -49,7 +49,7 @@ function NewEdition() {
                 }
             })
                 .then(response => {
-                    Cookie.set("enum", finalEdition.enumber)
+                    Cookie.set("enumber", finalEdition.enumber)
                     HandleSuccess(response.status)
 
                 })

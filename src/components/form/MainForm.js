@@ -105,6 +105,9 @@ function Form(props) {
             })
                 .then(response => {
                     handleSuccess(response.status)
+                    console.log(response.data.newUser.name);
+                    response.status === 201 && handleRedirect(true, response.data.newUser.name, response.data.token)
+
                 })
                 .catch(error => {
                     handleSuccess(error.response.status)
