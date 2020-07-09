@@ -26,7 +26,7 @@ function Hov() {
     }
     React.useEffect(() => {
         if (ready === true) {
-            axios.patch("https://thepc.herokuapp.com/api/edition/adminhovpost/" + Cookies.get("enum"), qs.stringify(finalLink), {
+            axios.patch("https://thepc.herokuapp.com/api/edition/adminhovpost/" + Cookies.get("enumber"), qs.stringify(finalLink), {
                 headers: {
                     'Authorization': 'Bearer ' + Cookies.get("auth"),
                     'Content-type': 'application/x-www-form-urlencoded'

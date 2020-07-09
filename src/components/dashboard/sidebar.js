@@ -39,13 +39,10 @@ function Sidebar(props) {
                     {props.valid === "admin" && <Item name="All Articles" redirect={redirect} />}
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Humans Of VIT</span>
+                    <span>Humans Of VIT (Admin only)</span>
                 </h6>
                 <ul className="nav flex-column mb-2">
-                    <Item
-                        name="Addition"
-                        redirect={redirect}
-                    />
+                    {props.valid === "admin" && <Item name="Addition" redirect={redirect} />}
 
                 </ul>
                 <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
