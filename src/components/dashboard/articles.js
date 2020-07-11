@@ -33,6 +33,8 @@ function Articles(props) {
         return <Card title={articleItem.atitle} content={articleItem.acontent} articleID={articleItem._id} type={articleItem.atype}
             valid={props.valid} approvalStatus={articleItem.approved}
             author={articleItem.authorName}
+            ednum={articleItem.editionNumber}
+            currentUser={true}
         />
     }
     return (

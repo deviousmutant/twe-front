@@ -50,7 +50,6 @@ function SubmitForm() {
             })
                 .then(response => {
                     funcSetSuccess(response.status);
-
                 })
                 .catch(error => {
                     funcSetSuccess(error.response.status);
@@ -78,7 +77,7 @@ function SubmitForm() {
                 <Input type="text-area" name="content" placeholder="Article Content" rows="10" onChange={handleChange} className="dash-input" />
             </div>
             <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={handleClick} />
-            {success === 201 ?
+            {success === 201 || success === 200 ?
                 <div className="alert alert-success alert-dismissible mt-2" role="alert">
                     Article Successfully Submitted
                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">
@@ -94,13 +93,21 @@ function SubmitForm() {
                         </button>
                     </div>
                     :
-                    success === 101 &&
-                    <div className="alert alert-warning alert-dismissible mt-2" role="alert">
-                        Please wait...
+                    success === 101 ?
+                        <div className="alert alert-warning alert-dismissible mt-2" role="alert">
+                            Please wait...
                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        :
+                        success === 401 &&
+                        <div className="alert alert-warning alert-dismissible mt-2" role="alert">
+                            Please authenticate
+                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
             }
 
         </div>

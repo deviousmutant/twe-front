@@ -5,6 +5,7 @@ import Articles from "./articles"
 import AllArticles from "./all-articles"
 import Hov from "./hov"
 import NewEdition from './newedition'
+import Contributions from './contributions'
 
 function Main(props) {
     const [title, setTitle] = React.useState()
@@ -66,6 +67,17 @@ function Main(props) {
                             <h1 className="form-header"> {title}</h1>
                         </div>
                         {<AllArticles valid={props.valid} />}
+                    </main>
+                )
+            }
+        case "Others contribution":
+            {
+                return (
+                    <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                        <div className="d-flex flex-wrap flex-md-nowrap pt-2 mt-2 mb-4">
+                            <h1 className="form-header"> {title}</h1>
+                        </div>
+                        {<Contributions valid={props.valid} />}
                     </main>
                 )
             }
