@@ -43,16 +43,19 @@ function AllArticles(props) {
     }
     return (
         <div>
-            {Cookies.get("enumber") && props.valid === "admin" ? <div className="alert alert-success alert-dismissible mt-2" role="alert">
+            {(Cookies.get("enumber") || edNum) && props.valid === "admin" ? <div className="alert alert-success alert-dismissible mt-2 sticky-top" role="alert">
                 You are approving for <strong>Edition {edNum} </strong>
                 {loading === false &&
-                    <img src="/icons/pencil.svg" className="icon text-success" alt="" width="14" height="14" title="Approval" data-toggle="modal" data-target="#exampleModalCenter" name="Approve" />
+                    <img src="/icons/pencil.svg" className="icon text-success" alt="" width="14" height="14" title="Access Old Edition" data-toggle="modal" data-target="#exampleModalCenter" name="Approve" />
                 }
             </div>
                 :
                 props.valid === "admin" &&
-                <div className="alert alert-danger alert-dismissible mt-2" role="alert">
+                <div className="alert alert-danger alert-dismissible mt-2 sticky-top" role="alert">
                     Create an edition to approve articles
+                    {loading === false &&
+                        <img src="/icons/pencil.svg" className="icon text-success" alt="" width="14" height="14" title="Approval" data-toggle="modal" data-target="#exampleModalCenter" name="Approve" />
+                    }
                 </div>}
             {loading === true ?
                 <div className="alert alert-warning alert-dismissible mt-2" role="alert">
@@ -65,7 +68,7 @@ function AllArticles(props) {
                             <div className="modal-dialog modal-dialog-centered " role="document">
                                 <div className="modal-content bg-black text-white">
                                     <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLongTitle">Change Selected Edition</h5>
+                                        <h5 className="modal-title" id="exampleModalLongTitle">{Cookies.get("enumber") ? "Change Selected Edition" : "Access old edition"}</h5>
                                         {/* <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true" className="btn-light">&times;</span>
                                         </button> */}

@@ -33,6 +33,20 @@ function Card(props) {
         setStatusRemoval(true)
 
     }
+
+    // React.useEffect(() => {
+    //     if (props.articleID) {
+    //         let url = "https://thepc.herokuapp.com/api/articles/" + props.articleID + "/picture"
+    //         axios.get(url, {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + auth
+    //             }
+    //         }).then(response => {
+    //             console.log(response.status);
+    //         })
+    //     }
+    // }, [props.articleID])
+
     React.useEffect(() => {
         if (statusRemoval === true) {
             let url = "https://thepc.herokuapp.com/api/articles/" + articleID
@@ -113,7 +127,7 @@ function Card(props) {
     }
     return (
         <div className="card card-article ">
-            <img src="img/card_img.jpg" className="card-img-top no-gutters" alt="..." />
+            <img src={"https://thepc.herokuapp.com/api/articles/" + props.articleID + "/picture"} className="card-img-top no-gutters" alt="..." />
             <div className="card-body">
                 <span className="badge badge-pill badge-dark mb-2 mr-1">{_.upperCase(props.type)}</span>
                 {/* {(approvalStatus === "approved" || approved === true) && (approved !== "deleted" || approved !== "working" || approved !== "rejected") ? <span class="badge badge-pill badge-success mb-2">Approved</span> : approvalStatus === "rejected" || approved === "rejected" ? <span class="badge badge-pill badge-danger mb-2">Rejected</span> : approved === "working" ? <span class="badge badge-pill badge-info mb-2">...</span> : approved === "deleted" ? <span class="badge badge-pill badge-danger mb-2">Deleted</span> : <span class="badge badge-pill badge-warning mb-2">Approval Pending</span>} */}
@@ -141,17 +155,9 @@ function Card(props) {
                     <img src="/icons/Trash.svg" className="icon" alt="" width="25" height="25" title="Delete" onClick={handleClick} name="Delete" />
                 }
             </div>
-            <div>
-                {approved === "invalid" && props.valid === "admin" ? <span className="badge badge badge-danger mb-2 ml-1"> ERROR: Change Edition number!</span>
-                    :
-                    Cookies.get("enumber") && props.valid === "admin" ?
-                        <span className="badge badge badge-success mb-2 ml-1">
-                            Selected Edition: {Cookies.get("enumber")}
-                        </span>
-                        :
-                        props.valid === "admin" && <span className="badge badge badge-danger mb-2 ml-1">No Selected edition</span>}
-            </div>
-            <ArticleModal title={props.title} type={props.type} content={props.content} id={props.articleID} />
+            {(approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") && (props.author === Cookies.get("name") || props.currentUser === true) &&
+                <ArticleModal title={props.title} type={props.type} content={props.content} id={props.articleID} />
+            }
         </div>
     )
 }

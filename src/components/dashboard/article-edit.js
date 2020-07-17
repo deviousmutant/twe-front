@@ -11,9 +11,9 @@ function ArticleModal(props) {
         atitle: props.title,
         acontent: props.content
     }
-    const [title, setTitle] = React.useState(props.title);
-    const [content, setContent] = React.useState(props.content);
-    const [type, setType] = React.useState(props.type);
+    const [title, setTitle] = React.useState(finalArticle.atitle);
+    const [content, setContent] = React.useState(finalArticle.acontent);
+    const [type, setType] = React.useState(finalArticle.atype);
     const [article, setArticle] = React.useState(false);
     const [success, setSuccess] = React.useState();
 
@@ -71,7 +71,10 @@ function ArticleModal(props) {
                                         </button> */}
                         </div>
                         <div className="modal-body">
-                            <br />
+                            <h1 className="text-danger"><span>&#10006;</span> </h1>
+                            <h3>Disabled</h3>
+                            <p>Please delete your article and upload with changes.</p>
+                            {/* <br />
                             <br />
                             <div className="form-group">
                                 <Input type="input" name="title" placeholder="Article title" onChange={HandleChange} className="dash-input" value={finalArticle.atitle} />
@@ -88,10 +91,11 @@ function ArticleModal(props) {
                             </div>
                             <div className="form-group">
                                 <Input type="text-area" name="content" placeholder="Article Content" rows="10" onChange={HandleChange} className="dash-input" value={finalArticle.acontent} />
-                            </div>
+                            </div> */}
                         </div>
                         <div className="modal-footer">
-                            <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={HandleClick} />
+                            <p>Thank you for understanding!</p>
+                            {/* <Button classAdd={"btn-solid dash-input"} name={"Submit"} handleClick={HandleClick} />
                             {success === 200 || success === 201 ?
                                 <div className="alert alert-success alert-dismissible mt-2 dash-input" role="alert">
                                     Article Successfully Edited
@@ -105,7 +109,7 @@ function ArticleModal(props) {
                                 success === 400 ?
                                     <div className="alert alert-danger alert-dismissible mt-2 dash-input" role="alert">
                                         Please check your fields and try again!
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -113,11 +117,11 @@ function ArticleModal(props) {
                                     success === 101 &&
                                     <div className="alert alert-warning alert-dismissible mt-2 dash-input" role="alert">
                                         Please wait...
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                            }
+                            } */}
                         </div>
                     </div>
                 </div>
