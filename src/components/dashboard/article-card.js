@@ -142,7 +142,7 @@ function Card(props) {
 
             </div>
             <div className="card-footer card-footer-article">
-                {props.valid === "admin" && (approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") && (Cookies.get("enumber")) &&
+                {props.valid === "admin" && (approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") &&
                     <img src="/icons/check.svg" className="icon" alt="" width="32" height="32" title="Approve" onClick={handleClick} name="Approve" />
                 }
                 {(approvalStatus === "pending" || approvalStatus === "rejected" || approved === "rejected") && (props.author === Cookies.get("name") || props.currentUser === true) &&
